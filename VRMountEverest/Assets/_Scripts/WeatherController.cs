@@ -9,13 +9,11 @@ public class WeatherController : MonoBehaviour {
 	private Dictionary<DateTime, WeatherData> weatherOracle12k = new Dictionary<DateTime, WeatherData>();
 	private WeatherData currentWeather;
 
-	public TimeController timeController = new TimeController();
-
+	public TimeController timeController;
 
 	// Use this for initialization
 	void Start () {
 		populateWeatherData();
-		
 
 
 	}
@@ -29,12 +27,13 @@ public class WeatherController : MonoBehaviour {
 		return firstDay;
 	}
 
+
 	public WeatherData updateCurrWeather() {
 		DateTime currTime = timeController.getSimTime();
 
-		print(currTime.ToString("G"));
+		print("HELLO, TIME IS: " + currTime.ToString("G"));
 
-		return null;
+		return weatherOracle12k[currTime];
 	}
 
 	private void populateWeatherData() {
