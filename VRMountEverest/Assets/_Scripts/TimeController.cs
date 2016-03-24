@@ -50,7 +50,8 @@ public class TimeController : MonoBehaviour {
 		DateTime newTime = t;
 		if (newTime.Hour < 6 || newTime.Hour >= 20) {
 			if (newTime.Hour >= 20) {
-				newTime = new DateTime(t.Year, t.Month, t.Day + 1, 6, 0, 0);
+                if (newTime.Day < DateTime.DaysInMonth(newTime.Year, newTime.Month)) { newTime = new DateTime(t.Year, t.Month, t.Day + 1, 6, 0, 0); }
+                else { newTime = new DateTime(t.Year, t.Month + 1, 1, 6, 0, 0); }
 			}
 			else {
 				newTime = new DateTime(t.Year, t.Month, t.Day, 6, 0, 0);
@@ -69,8 +70,9 @@ public class TimeController : MonoBehaviour {
 	public DateTime prevTimePeriod(DateTime t) {
 		DateTime newTime = t;
 		if (newTime.Hour <= 6) {
-			newTime = new DateTime(t.Year, t.Month, t.Day - 1, 20, 0, 0);
-		}
+            if (newTime.Day != 1) { newTime = new DateTime(t.Year, t.Month, t.Day - 1, 20, 0, 0); }
+            else { newTime = new DateTime(t.Year, t.Month - 1, DateTime.DaysInMonth(newTime.Year, newTime.Month), 20, 0, 0); }
+        }
 		else if (newTime.Hour <= 14) {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 6, 0, 0);
 		}

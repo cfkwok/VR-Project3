@@ -6,11 +6,15 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using DigitalRuby.RainMaker;
 
+enum intensity { None, Light, Medium, Heavy };
+
 public class WeatherController : MonoBehaviour {
 
 	private DateTime firstDay = new DateTime(2016, 3, 23, 6, 0, 0);
 	private Dictionary<DateTime, WeatherData> weatherOracle12k = new Dictionary<DateTime, WeatherData>();
 	private WeatherData currentWeather;
+    private intensity snowIntensity = intensity.None, rainIntensity = intensity.None, windIntensity = intensity.None;
+    private string weatherOutput;
 
 	public TimeController timeController;
 	public BaseRainScript baseRainScript;
@@ -50,6 +54,58 @@ public class WeatherController : MonoBehaviour {
 			applyWeatherScene();
 			
 		}
+
+        // start weather text update
+        switch (windIntensity)
+        {
+            case intensity.Heavy:
+                weatherOutput = "Strong winds";
+                break;
+            case intensity.Medium:
+                weatherOutput = "Stiff winds";
+                break;
+            case intensity.Light:
+                weatherOutput = "Light winds";
+                break;
+            case intensity.None:
+                weatherOutput = "Gentle winds";
+                break;
+            default:
+                break;
+        }
+        switch (rainIntensity)
+        {
+            case intensity.Heavy:
+                weatherOutput += ", intense downpour";
+                break;
+            case intensity.Medium:
+                weatherOutput += ", heavy rains";
+                break;
+            case intensity.Light:
+                weatherOutput += ", light rains";
+                break;
+            case intensity.None:
+            default:
+                break;
+        }
+        switch (snowIntensity)
+        {
+            case intensity.Heavy:
+                weatherOutput += ", intense downfall";
+                break;
+            case intensity.Medium:
+                weatherOutput += ", heavy downfall";
+                break;
+            case intensity.Light:
+                weatherOutput += ", light downfall";
+                break;
+            case intensity.None:
+            default:
+                break;
+        }
+
+        weatherText.text = weatherOutput;
+        // end weather text update
 	}
 
 	public void updateDay() {
@@ -67,24 +123,27 @@ public class WeatherController : MonoBehaviour {
 				baseRainScript.audioSourceWind.Stop();
 				baseRainScript.WindSoundVolumeModifier = 1.0f;
 				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
-
+                windIntensity = intensity.Heavy;
 			}
 			else if (windSpeed >= 25) {
 				// Play moderate wind sounds and animation
 				baseRainScript.audioSourceWind.Stop();
 				baseRainScript.WindSoundVolumeModifier = 0.65f;
 				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+                windIntensity = intensity.Medium;
 			}
 			else if (windSpeed >= 15) {
 				// Play light wind sounds and animation
 				baseRainScript.audioSourceWind.Stop();
 				baseRainScript.WindSoundVolumeModifier = 0.3f;
 				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+                windIntensity = intensity.Light;
 			}
 			else {
 				baseRainScript.audioSourceWind.Stop();
 				baseRainScript.WindSoundVolumeModifier = 0.1f;
 				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+                windIntensity = intensity.None;
 			}
 		}
 		
@@ -92,34 +151,41 @@ public class WeatherController : MonoBehaviour {
 		if (currentWeather.snow >= 6) {
 			// Display heavy snow animation
 			baseSnowScript.RainIntensity = 0.08f;
-
+            snowIntensity = intensity.Heavy;
 		}
 		else if (currentWeather.snow >= 3) {
 			// Display moderate snow animation
 			baseSnowScript.RainIntensity = 0.04f;
+            snowIntensity = intensity.Medium;
 		}
 		else if (currentWeather.snow >= 1) {
 			// Display light snow animation
 			baseSnowScript.RainIntensity = 0.02f;
+            snowIntensity = intensity.Light;
 		}
 		else {
 			baseSnowScript.RainIntensity = 0.0f;
+            snowIntensity = intensity.None;
 		}
 
 		if (currentWeather.rain >= 6) {
 			// Display heavy rain animation
 			baseRainScript.RainIntensity = 0.75f;
+            rainIntensity = intensity.Heavy;
 		}
 		else if (currentWeather.rain >= 3) {
 			// Display moderate rain animation
 			baseRainScript.RainIntensity = 0.4f;
+            rainIntensity = intensity.Medium;
 		}
 		else if (currentWeather.rain >= 1) {
 			// Display light rain animation
 			baseRainScript.RainIntensity = 0.2f;
+            rainIntensity = intensity.Light;
 		}
 		else {
 			baseRainScript.RainIntensity = 0f;
+            rainIntensity = intensity.None;
 		}
 	}
 
