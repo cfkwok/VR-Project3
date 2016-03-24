@@ -2,6 +2,8 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using DigitalRuby.RainMaker;
 
 public class WeatherController : MonoBehaviour {
 
@@ -10,17 +12,24 @@ public class WeatherController : MonoBehaviour {
 	private WeatherData currentWeather;
 
 	public TimeController timeController;
+	public BaseRainScript baseRainScript;
+	public BaseRainScript baseSnowScript;
+	public GameObject Sun;
+
+	private float sunLocation = 0f;
 
 	// Use this for initialization
 	void Start () {
 		populateWeatherData();
-
-
+		StartCoroutine(DoWeatherCheck());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		updateCurrWeather();
+		//updateCurrWeather();
+		Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+		sunLocation += 1;
+
 	}
 
 	public DateTime getFirstDay () {
@@ -28,16 +37,99 @@ public class WeatherController : MonoBehaviour {
 	}
 
 
-	public WeatherData updateCurrWeather() {
+	public void updateCurrWeather() {
 		DateTime currTime = timeController.getSimTime();
 
-		print("HELLO, TIME IS: " + currTime.ToString("G"));
+		if (weatherOracle12k.ContainsKey(currTime)) {
+			currentWeather = weatherOracle12k[currTime];
+			print("KEY CONTAINED: " + currTime + "   With Value: " + weatherOracle12k[currTime].toString());
+			
+			updateDay();
+			applyWeatherScene();
+			
+		}
+	}
 
-		return weatherOracle12k[currTime];
+	public void updateDay() {
+
+	}
+
+	public void applyWeatherScene() {
+		int windSpeed = 0;
+		String windString = Regex.Match(currentWeather.wind, @"\d+").Value;
+		Int32.TryParse(windString, out windSpeed);
+		
+		if (baseRainScript.audioSourceWind != null) {
+			if (windSpeed >= 40) {
+				// Play strong wind sounds and animation
+				baseRainScript.audioSourceWind.Stop();
+				baseRainScript.WindSoundVolumeModifier = 1.0f;
+				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+
+			}
+			else if (windSpeed >= 25) {
+				// Play moderate wind sounds and animation
+				baseRainScript.audioSourceWind.Stop();
+				baseRainScript.WindSoundVolumeModifier = 0.65f;
+				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+			}
+			else if (windSpeed >= 15) {
+				// Play light wind sounds and animation
+				baseRainScript.audioSourceWind.Stop();
+				baseRainScript.WindSoundVolumeModifier = 0.3f;
+				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+			}
+			else {
+				baseRainScript.audioSourceWind.Stop();
+				baseRainScript.WindSoundVolumeModifier = 0.1f;
+				baseRainScript.audioSourceWind.Play((baseRainScript.WindZone.windMain / baseRainScript.WindSpeedRange.z) * baseRainScript.WindSoundVolumeModifier);
+			}
+		}
+		
+
+		if (currentWeather.snow >= 6) {
+			// Display heavy snow animation
+			baseSnowScript.RainIntensity = 0.08f;
+
+		}
+		else if (currentWeather.snow >= 3) {
+			// Display moderate snow animation
+			baseSnowScript.RainIntensity = 0.04f;
+		}
+		else if (currentWeather.snow >= 1) {
+			// Display light snow animation
+			baseSnowScript.RainIntensity = 0.02f;
+		}
+		else {
+			baseSnowScript.RainIntensity = 0.0f;
+		}
+
+		if (currentWeather.rain >= 6) {
+			// Display heavy rain animation
+			baseRainScript.RainIntensity = 0.75f;
+		}
+		else if (currentWeather.rain >= 3) {
+			// Display moderate rain animation
+			baseRainScript.RainIntensity = 0.4f;
+		}
+		else if (currentWeather.rain >= 1) {
+			// Display light rain animation
+			baseRainScript.RainIntensity = 0.2f;
+		}
+		else {
+			baseRainScript.RainIntensity = 0f;
+		}
+	}
+
+	IEnumerator DoWeatherCheck() {
+	    for(;;) {
+	        updateCurrWeather();
+	        yield return new WaitForSeconds(.1f);
+	    }
 	}
 
 	private void populateWeatherData() {
-		// Data for elevation at 12k feet		
+		// Data for elevation at 12k feet
 		DateTime day0_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 6, 0, 0);
 		WeatherData w0_am = new WeatherData(day0_am, "35 ESE (mph)", "clear", 0, 0, 23);
 		DateTime day0_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 14, 0, 0);
