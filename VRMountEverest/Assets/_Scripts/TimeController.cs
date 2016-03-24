@@ -1,10 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TimeController : MonoBehaviour {
 
-	private DateTime currentTime = (new WeatherController()).getFirstDay();
+    public Text timeText;
+    private DateTime currentTime = (new WeatherController()).getFirstDay();
 	private DateTime simTime;
 
 	// Use this for initialization
@@ -32,6 +34,8 @@ public class TimeController : MonoBehaviour {
 			print("R was pressed. Previous time period");
 			simTime = prevTimePeriod(simTime);
 		}
+
+        timeText.text = simTime.ToString();
 	}
 
 	public DateTime getCurrentTime() {
@@ -80,6 +84,7 @@ public class TimeController : MonoBehaviour {
 
 	public void UpdateTime() {
 		simTime = simTime.AddHours(0.016666667);
+        timeText.text = simTime.ToString();
 		print(simTime);
 	}
 }

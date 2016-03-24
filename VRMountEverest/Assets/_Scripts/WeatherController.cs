@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ public class WeatherController : MonoBehaviour {
 	public BaseRainScript baseRainScript;
 	public BaseRainScript baseSnowScript;
 	public GameObject Sun;
+    public Text weatherText; //usage weatherText.text = "text"; 
 
 	private float sunLocation = 0f;
 
