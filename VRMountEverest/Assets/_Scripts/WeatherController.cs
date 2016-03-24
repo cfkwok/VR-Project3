@@ -18,11 +18,10 @@ public class WeatherController : MonoBehaviour {
 
 	public TimeController timeController;
 	public BaseRainScript baseRainScript;
-	public BaseRainScript baseSnowScript;
-	public GameObject Sun;
+	public BaseRainScript baseSnowScript;	
     public Text weatherText; //usage weatherText.text = "text"; 
 
-	private float sunLocation = 0f;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -32,9 +31,8 @@ public class WeatherController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//updateCurrWeather();
-		Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
-		sunLocation += 1;
+		//updateCurrWeather();		
+		
 
 	}
 

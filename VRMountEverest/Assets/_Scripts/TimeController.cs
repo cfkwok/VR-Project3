@@ -6,8 +6,10 @@ using System.Collections;
 public class TimeController : MonoBehaviour {
 
     public Text timeText;
+    public GameObject Sun;
     private DateTime currentTime = (new WeatherController()).getFirstDay();
 	private DateTime simTime;
+	private float sunLocation = 0.0f;		
 
 	// Use this for initialization
 	void Start () {
@@ -21,10 +23,15 @@ public class TimeController : MonoBehaviour {
 		if (Input.GetKeyDown("g")) {
 			print("G was pressed. 1 hour forward");
 			simTime = simTime.AddHours(1.00);
+			sunLocation += (0.25f * 60);
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			
 		}
 		if (Input.GetKeyDown("f")) {
 			print("F was pressed. 1 hour backward");
 			simTime = simTime.AddHours(-1.00);
+			sunLocation += (0.25f * -60);
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		}
 		if (Input.GetKeyDown("t")) {
 			print("T was pressed. Next time period");
@@ -34,7 +41,8 @@ public class TimeController : MonoBehaviour {
 			print("R was pressed. Previous time period");
 			simTime = prevTimePeriod(simTime);
 		}
-
+		
+		
         timeText.text = simTime.ToString();
 	}
 
@@ -88,5 +96,7 @@ public class TimeController : MonoBehaviour {
 		simTime = simTime.AddHours(0.016666667);
         timeText.text = simTime.ToString();
 		print(simTime);
+		Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+		sunLocation += (0.25f);
 	}
 }
