@@ -7,6 +7,8 @@ Project("{70D2F67F-2BA5-004B-BE5C-DCF1D387B911}") = "VRMountEverest", "Assembly-
 EndProject
 Project("{70D2F67F-2BA5-004B-BE5C-DCF1D387B911}") = "VRMountEverest", "Assembly-CSharp-Editor.csproj", "{5A62FDB9-7DEF-D6A7-A842-D7429946355F}"
 EndProject
+Project("{70D2F67F-2BA5-004B-BE5C-DCF1D387B911}") = "VRMountEverest", "Assembly-UnityScript.unityproj", "{C6FDE05A-1A06-8E9D-F9D7-478C55301AB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{5A62FDB9-7DEF-D6A7-A842-D7429946355F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A62FDB9-7DEF-D6A7-A842-D7429946355F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A62FDB9-7DEF-D6A7-A842-D7429946355F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FDE05A-1A06-8E9D-F9D7-478C55301AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FDE05A-1A06-8E9D-F9D7-478C55301AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FDE05A-1A06-8E9D-F9D7-478C55301AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FDE05A-1A06-8E9D-F9D7-478C55301AB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
