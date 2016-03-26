@@ -7,9 +7,11 @@ public class TimeController : MonoBehaviour {
 
     public Text timeText;
     public GameObject Sun;
+    public GameObject Stars;
     private DateTime currentTime = (new WeatherController()).getFirstDay();
 	private DateTime simTime;
-	private float sunLocation = 0.0f;		
+	private float sunLocation = 0.0f;	
+	private float starLocation = 0.0f;	
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +27,8 @@ public class TimeController : MonoBehaviour {
 			simTime = simTime.AddHours(1.00);
 			sunLocation += (0.25f * 60);
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation += (0.25f * 60);
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 			
 		}
 		if (Input.GetKeyDown("f")) {
@@ -32,6 +36,8 @@ public class TimeController : MonoBehaviour {
 			simTime = simTime.AddHours(-1.00);
 			sunLocation += (0.25f * -60);
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation += (0.25f * -60);
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
 		if (Input.GetKeyDown("t")) {
 			print("T was pressed. Next time period");
@@ -66,16 +72,22 @@ public class TimeController : MonoBehaviour {
 			}
 			sunLocation = 0;
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation = 0;
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
 		else if (newTime.Hour < 14) {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 14, 0, 0);
 			sunLocation = (0.25f * 60) * 8;
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation = (0.25f * 60) * 8;
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
 		else {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 20, 0, 0);
 			sunLocation = (0.25f * 60) * 14;
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation = (0.25f * 60) * 14;
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
 
 		return newTime;
@@ -86,6 +98,8 @@ public class TimeController : MonoBehaviour {
 		if (newTime.Hour <= 6) {
 			sunLocation = (0.25f * 60) * 14;
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation = (0.25f * 60) * 14;
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
             if (newTime.Day != 1) { newTime = new DateTime(t.Year, t.Month, t.Day - 1, 20, 0, 0); }
             else { newTime = new DateTime(t.Year, t.Month - 1, DateTime.DaysInMonth(newTime.Year, newTime.Month), 20, 0, 0); }
         }
@@ -93,11 +107,15 @@ public class TimeController : MonoBehaviour {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 6, 0, 0);
 			sunLocation = 0;
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation = 0;
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
 		else {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 14, 0, 0);
 			sunLocation = (0.25f * 60) * 8;
 			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
+			starLocation += (0.25f * 60) * 8;
+			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
 
 		return newTime;
@@ -110,5 +128,7 @@ public class TimeController : MonoBehaviour {
 		print(simTime);
 		Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		sunLocation += (0.25f);
+		Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
+		starLocation += (0.25f);
 	}
 }
