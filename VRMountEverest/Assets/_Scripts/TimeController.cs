@@ -64,12 +64,18 @@ public class TimeController : MonoBehaviour {
 			else {
 				newTime = new DateTime(t.Year, t.Month, t.Day, 6, 0, 0);
 			}
+			sunLocation = 0;
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		}
 		else if (newTime.Hour < 14) {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 14, 0, 0);
+			sunLocation = (0.25f * 60) * 8;
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		}
 		else {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 20, 0, 0);
+			sunLocation = (0.25f * 60) * 14;
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		}
 
 		return newTime;
@@ -78,14 +84,20 @@ public class TimeController : MonoBehaviour {
 	public DateTime prevTimePeriod(DateTime t) {
 		DateTime newTime = t;
 		if (newTime.Hour <= 6) {
+			sunLocation = (0.25f * 60) * 14;
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
             if (newTime.Day != 1) { newTime = new DateTime(t.Year, t.Month, t.Day - 1, 20, 0, 0); }
             else { newTime = new DateTime(t.Year, t.Month - 1, DateTime.DaysInMonth(newTime.Year, newTime.Month), 20, 0, 0); }
         }
 		else if (newTime.Hour <= 14) {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 6, 0, 0);
+			sunLocation = 0;
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		}
 		else {
 			newTime = new DateTime(t.Year, t.Month, t.Day, 14, 0, 0);
+			sunLocation = (0.25f * 60) * 8;
+			Sun.transform.eulerAngles = new Vector3(sunLocation, 0f, 0f);
 		}
 
 		return newTime;
