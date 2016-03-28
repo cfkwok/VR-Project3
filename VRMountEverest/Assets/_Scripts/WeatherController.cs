@@ -11,6 +11,7 @@ enum intensity { None, Light, Medium, Heavy };
 public class WeatherController : MonoBehaviour {
 
 	private DateTime firstDay = new DateTime(2016, 3, 27, 6, 0, 0);
+	private DateTime lastDay = new DateTime(2016, 4, 1, 23, 0, 0);
 	private Dictionary<DateTime, WeatherData> weatherOracle18k = new Dictionary<DateTime, WeatherData>();
 	private Dictionary<DateTime, WeatherData> weatherOracle21k = new Dictionary<DateTime, WeatherData>();
 	private Dictionary<DateTime, WeatherData> weatherOracle24k = new Dictionary<DateTime, WeatherData>();
@@ -58,7 +59,6 @@ public class WeatherController : MonoBehaviour {
 			else {
 				currentWeather = weatherOracle27k[currentTimeEvent];
 			}
-			updateDay();
 			applyWeatherScene();
 
 		}
@@ -72,7 +72,6 @@ public class WeatherController : MonoBehaviour {
 			else {
 				currentWeather = weatherOracle24k[currentTimeEvent];
 			}
-			updateDay();
 			applyWeatherScene();
 		}
 
@@ -84,8 +83,7 @@ public class WeatherController : MonoBehaviour {
 			}
 			else {
 				currentWeather = weatherOracle21k[currentTimeEvent];
-			}
-			updateDay();
+			}			
 			applyWeatherScene();
 		}
 
@@ -98,7 +96,6 @@ public class WeatherController : MonoBehaviour {
 			else {
 				currentWeather = weatherOracle18k[currentTimeEvent];
 			}
-			updateDay();
 			applyWeatherScene();
 		}
 
@@ -151,12 +148,13 @@ public class WeatherController : MonoBehaviour {
                 break;
         }
 
-        weatherText.text = weatherOutput;
+        if (currTime < firstDay || currTime > lastDay) {
+        	weatherText.text = "Data unavailable";
+        }
+        else {
+        	weatherText.text = weatherOutput;
+        }
         // end weather text update
-	}
-
-	public void updateDay() {
-
 	}
 
 	public void applyWeatherScene() {

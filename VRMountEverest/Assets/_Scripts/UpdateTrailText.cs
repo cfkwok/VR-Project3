@@ -8,7 +8,7 @@ public class UpdateTrailText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	   
 	}
 	
 	// Update is called once per frame
@@ -33,5 +33,24 @@ public class UpdateTrailText : MonoBehaviour {
         else if (gameObject.name == "Peak") {
         	trailText.text = "Peak of Mount Everest";
         }
+
+
+        if (gameObject.name == "Checkpoint1") {
+            trailText.text = "North Col, checkpoint 1";
+        }
+        else if (gameObject.name == "Checkpoint2") {
+            trailText.text = "North Col, checkpoint 2";
+        }
+        else if (gameObject.name == "Checkpoint3") {
+            trailText.text = "North Col, checkpoint 3";
+        }
+        else if (gameObject.name == "Checkpoint4") {
+            trailText.text = "North Col, checkpoint 4";
+        }
+        else if (gameObject.name == "Checkpoint5") {
+            trailText.text = "North Col, checkpoint 5";
+        }
+        
+
     }
 }
