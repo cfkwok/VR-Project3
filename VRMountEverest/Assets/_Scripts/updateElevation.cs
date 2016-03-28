@@ -5,8 +5,9 @@ using System.Collections;
 
 public class updateElevation : MonoBehaviour {
     public GameObject peak;
+    public WeatherController weatherController;
     public Text elevation;
-    private double elev;
+    public double elev;
 	
 	void Update () {
 		// South col math
@@ -16,6 +17,7 @@ public class updateElevation : MonoBehaviour {
         // elev = 29029.0 - (peak.transform.position.y-transform.position.y)*3.28084;
         elev = 17000 + (transform.position.y - 254) * 39.04;
         elev = Math.Round(elev) - (Math.Round(elev) % 10);
-        elevation.text = elev.ToString() + " feet";
+        String temp = weatherController.currentWeather.temp.ToString();
+        elevation.text = elev.ToString() + " feet, " + temp + "°F";
 	}
 }

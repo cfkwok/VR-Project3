@@ -15,27 +15,28 @@ public class TransportTrigger : MonoBehaviour {
 	void Update () {
     	// Next elevation
 	   if (Input.GetKeyDown("x")) {
-	   		// Start at elevation 12k ft, peaks at ~28k, and we have 3 levels of elevation
-	   		// 28 - 12 = 16, 16 / 3 = 5.. increments of 5
-	   		// Find current elevation...
-	   		// Already at max peak
-	   		if (playerObj.transform.position.y >= 15) {
-
+	   		GameObject camp1 = GameObject.Find("/SouthColPath/BaseCamp");
+	   		GameObject camp2 = GameObject.Find("/SouthColPath/Camp2");
+	   		GameObject camp3 = GameObject.Find("/SouthColPath/Camp3");
+	   		GameObject camp4 = GameObject.Find("/SouthColPath/Camp4");
+	   		GameObject peak = GameObject.Find("Peak");
+	   		if (playerObj.transform.position.y >= camp4.transform.position.y) {
+	   			playerObj.transform.position = new Vector3(peak.transform.position.x, peak.transform.position.y, peak.transform.position.z);
 	   		}
-	   		// At elevations 24k to 30k ft
-	   		else if (playerObj.transform.position.y >= 10) {
-	   			// Replace vector positions with mountain location...
-	   			playerObj.transform.position = new Vector3(playerObj.transform.position.x, 15, playerObj.transform.position.z);
+	   		// Camp 4 go to peak?
+	   		else if (playerObj.transform.position.y >= camp3.transform.position.y) {
+	   			playerObj.transform.position = new Vector3(camp4.transform.position.x, camp4.transform.position.y, camp4.transform.position.z);
 	   		}
-	   		// At elevations 18k to 24k ft
-	   		else if (playerObj.transform.position.y >= 5) {
-	   			// Replace vector positions with mountain location...
-	   			playerObj.transform.position = new Vector3(playerObj.transform.position.x, 10, playerObj.transform.position.z);
+	   		// At elevations 21k to 24k ft
+	   		else if (playerObj.transform.position.y >= camp2.transform.position.y) {
+	   			playerObj.transform.position = new Vector3(camp3.transform.position.x, camp3.transform.position.y, camp3.transform.position.z);
 	   		}
-	   		// At elevations 12k to 18k ft
+	   		// At elevations 18k to 21k ft
+	   		else if (playerObj.transform.position.y >= camp1.transform.position.y) {
+	   			playerObj.transform.position = new Vector3(camp2.transform.position.x, camp2.transform.position.y, camp2.transform.position.z);
+	   		}
 	   		else {
-	   			// Replace vector positions with mountain location...
-	   			playerObj.transform.position = new Vector3(playerObj.transform.position.x, 5, playerObj.transform.position.z);
+	   			playerObj.transform.position = new Vector3(camp1.transform.position.x, camp1.transform.position.y, camp1.transform.position.z);
 	   		}
        }
 
