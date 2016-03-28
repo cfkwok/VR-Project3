@@ -112,6 +112,7 @@
     <Compile Include="Assets\_Scripts\TransportTrigger.cs" />
     <Compile Include="Assets\_Scripts\WeatherController.cs" />
     <Compile Include="Assets\_Scripts\WeatherData.cs" />
+    <Compile Include="Assets\_Scripts\targetingUpdate.cs" />
     <Compile Include="Assets\_Scripts\updateElevation.cs" />
   </ItemGroup>
   <ItemGroup>
