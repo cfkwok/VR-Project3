@@ -10,16 +10,22 @@ enum intensity { None, Light, Medium, Heavy };
 
 public class WeatherController : MonoBehaviour {
 
-	private DateTime firstDay = new DateTime(2016, 3, 23, 6, 0, 0);
-	private Dictionary<DateTime, WeatherData> weatherOracle12k = new Dictionary<DateTime, WeatherData>();
-	private WeatherData currentWeather;
+	private DateTime firstDay = new DateTime(2016, 3, 27, 6, 0, 0);
+	private DateTime lastDay = new DateTime(2016, 4, 1, 23, 0, 0);
+	private Dictionary<DateTime, WeatherData> weatherOracle18k = new Dictionary<DateTime, WeatherData>();
+	private Dictionary<DateTime, WeatherData> weatherOracle21k = new Dictionary<DateTime, WeatherData>();
+	private Dictionary<DateTime, WeatherData> weatherOracle24k = new Dictionary<DateTime, WeatherData>();
+	private Dictionary<DateTime, WeatherData> weatherOracle27k = new Dictionary<DateTime, WeatherData>();	
     private intensity snowIntensity = intensity.None, rainIntensity = intensity.None, windIntensity = intensity.None;
     private string weatherOutput;
+    private DateTime currentTimeEvent;
 
 	public TimeController timeController;
 	public BaseRainScript baseRainScript;
 	public BaseRainScript baseSnowScript;	
     public Text weatherText; //usage weatherText.text = "text"; 
+    public updateElevation upElev;
+    public WeatherData currentWeather;
 
 	
 
@@ -43,14 +49,54 @@ public class WeatherController : MonoBehaviour {
 
 	public void updateCurrWeather() {
 		DateTime currTime = timeController.getSimTime();
-
-		if (weatherOracle12k.ContainsKey(currTime)) {
-			currentWeather = weatherOracle12k[currTime];
-			print("KEY CONTAINED: " + currTime + "   With Value: " + weatherOracle12k[currTime].toString());
-			
-			updateDay();
+		
+		if (upElev.elev >= 27000) {
+			if (weatherOracle27k.ContainsKey(currTime)) {
+				currentTimeEvent = currTime;
+				currentWeather = weatherOracle27k[currTime];
+				print("ELE 27k KEY CONTAINED: " + currTime + "   With Value: " + weatherOracle27k[currTime].toString());
+			}
+			else {
+				currentWeather = weatherOracle27k[currentTimeEvent];
+			}
 			applyWeatherScene();
-			
+
+		}
+
+		else if (upElev.elev >= 24000) {
+			if (weatherOracle24k.ContainsKey(currTime)) {
+				currentTimeEvent = currTime;
+				currentWeather = weatherOracle24k[currTime];
+				print("ELE 24k KEY CONTAINED: " + currTime + "   With Value: " + weatherOracle24k[currTime].toString());
+			}
+			else {
+				currentWeather = weatherOracle24k[currentTimeEvent];
+			}
+			applyWeatherScene();
+		}
+
+		else if (upElev.elev >= 21000) {
+			if (weatherOracle21k.ContainsKey(currTime)) {
+				currentTimeEvent = currTime;
+				currentWeather = weatherOracle21k[currTime];
+				print("ELE 21k KEY CONTAINED: " + currTime + "   With Value: " + weatherOracle21k[currTime].toString());
+			}
+			else {
+				currentWeather = weatherOracle21k[currentTimeEvent];
+			}			
+			applyWeatherScene();
+		}
+
+		else {
+			if (weatherOracle18k.ContainsKey(currTime)) {
+				currentTimeEvent = currTime;
+				currentWeather = weatherOracle18k[currTime];
+				print("ELE 18k KEY CONTAINED: " + currTime + "   With Value: " + weatherOracle18k[currTime].toString());
+			}
+			else {
+				currentWeather = weatherOracle18k[currentTimeEvent];
+			}
+			applyWeatherScene();
 		}
 
         // start weather text update
@@ -102,12 +148,13 @@ public class WeatherController : MonoBehaviour {
                 break;
         }
 
-        weatherText.text = weatherOutput;
+        if (currTime < firstDay || currTime > lastDay) {
+        	weatherText.text = "Data unavailable";
+        }
+        else {
+        	weatherText.text = weatherOutput;
+        }
         // end weather text update
-	}
-
-	public void updateDay() {
-
 	}
 
 	public void applyWeatherScene() {
@@ -195,65 +242,248 @@ public class WeatherController : MonoBehaviour {
 	}
 
 	private void populateWeatherData() {
-		// Data for elevation at 12k feet
+		// Data for elevation at 18k feet
 		DateTime day0_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 6, 0, 0);
-		WeatherData w0_am = new WeatherData(day0_am, "35 ESE (mph)", "clear", 0, 0, 23);
+		WeatherData w0_am = new WeatherData(day0_am, "5 SE (mph)", "clear", 0, 0, 8);
 		DateTime day0_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 14, 0, 0);
-		WeatherData w0_pm = new WeatherData(day0_pm, "25 E (mph)", "clear", 0, 0, 25);
+		WeatherData w0_pm = new WeatherData(day0_pm, "30 NE (mph)", "snow showers", 1.6, 0, 9);
 		DateTime day0_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 20, 0, 0);
-		WeatherData w0_night = new WeatherData(day0_night, "15 SE (mph)", "clear", 0, 0, 21);
+		WeatherData w0_night = new WeatherData(day0_night, "30 NE (mph)", "snow showers", 4.3, 0, 7);
 		DateTime day1_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 6, 0, 0);
-		WeatherData w1_am = new WeatherData(day1_am, "35 ESE (mph)", "clear", 0, 0, 30);
+		WeatherData w1_am = new WeatherData(day1_am, "25 NE (mph)", "heavy snow", 4.3, 0, 5);
 		DateTime day1_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 14, 0, 0);
-		WeatherData w1_pm = new WeatherData(day1_pm, "55 SSE (mph)", "clear", 0, 0, 30);
+		WeatherData w1_pm = new WeatherData(day1_pm, "5 SE (mph)", "snow showers", 4.3, 0, 1);
 		DateTime day1_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 20, 0, 0);
-		WeatherData w1_night = new WeatherData(day1_night, "30 ESE (mph)", "clear", 0, 0, 28);
+		WeatherData w1_night = new WeatherData(day1_night, "30 SE (mph)", "snow showers", 0.8, 0, 1);
 		DateTime day2_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 6, 0, 0);
-		WeatherData w2_am = new WeatherData(day2_am, "35 SE (mph)", "clear", 0, 0, 37);
+		WeatherData w2_am = new WeatherData(day2_am, "25 SE (mph)", "clear", 0, 0, 9);
 		DateTime day2_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 14, 0, 0);
-		WeatherData w2_pm = new WeatherData(day2_pm, "35 SSE (mph)", "clear", 0, 0, 36);
+		WeatherData w2_pm = new WeatherData(day2_pm, "15 SE (mph)", "clear", 0, 0, 12);
 		DateTime day2_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 20, 0, 0);
-		WeatherData w2_night = new WeatherData(day2_night, "30 SE (mph)", "clear", 0, 0, 37);
+		WeatherData w2_night = new WeatherData(day2_night, "15 NE (mph)", "clear", 0, 0, 9);
 		DateTime day3_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 6, 0, 0);
-		WeatherData w3_am = new WeatherData(day3_am, "15 ESE (mph)", "clear", 0, 0, 43);
+		WeatherData w3_am = new WeatherData(day3_am, "15 NE (mph)", "snow showers", 0.4, 0, 10);
 		DateTime day3_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 14, 0, 0);
-		WeatherData w3_pm = new WeatherData(day3_pm, "25 SE (mph)", "clear", 0, 0, 41);
+		WeatherData w3_pm = new WeatherData(day3_pm, "15 NE (mph)", "snow showers", 3.1, 0, 9);
 		DateTime day3_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 20, 0, 0);
-		WeatherData w3_night = new WeatherData(day3_night, "15 E (mph)", "clear", 0, 0, 41);
+		WeatherData w3_night = new WeatherData(day3_night, "5 SE (mph)", "snow showers", 1.6, 0, 5);
 		DateTime day4_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 6, 0, 0);
-		WeatherData w4_am = new WeatherData(day4_am, "30 E (mph)", "clear", 0, 0, 45);
+		WeatherData w4_am = new WeatherData(day4_am, "15 SE (mph)", "snow showers", 0.4, 0, 9);
 		DateTime day4_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 14, 0, 0);
-		WeatherData w4_pm = new WeatherData(day4_pm, "35 E (mph)", "some clouds", 0, 0, 41);
-		DateTime day4_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 20, 0, 0);
-		WeatherData w4_night = new WeatherData(day4_night, "35 E (mph)", "clear", 0, 0, 36);
-		DateTime day5_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 5, 6, 0, 0);
-		WeatherData w5_am = new WeatherData(day5_am, "20 ENE (mph)", "clear", 0, 0, 41);
-		DateTime day5_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 5, 14, 0, 0);
-		WeatherData w5_pm = new WeatherData(day5_pm, "30 NE (mph)", "snow showers", 2.4, 0, 36);
-		DateTime day5_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 5, 20, 0, 0);
-		WeatherData w5_night = new WeatherData(day5_night, "35 ENE (mph)", "snow showers", 1.6, 0, 32);
+		WeatherData w4_pm = new WeatherData(day4_pm, "20 SE (mph)", "snow showers", 2.0, 0, 10);
+		DateTime day4_night = new DateTime(firstDay.Year, firstDay.Month, 1, 20, 0, 0);
+		WeatherData w4_night = new WeatherData(day4_night, "15 S (mph)", "snow showers", 0, 0, 7);
+		DateTime day5_am = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 6, 0, 0);
+		WeatherData w5_am = new WeatherData(day5_am, "20 SE (mph)", "clear", 0, 0, 10);
+		DateTime day5_pm = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 14, 0, 0);
+		WeatherData w5_pm = new WeatherData(day5_pm, "35 SE (mph)", "snow showers", 0.8, 0, 10);
+		DateTime day5_night = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 20, 0, 0);
+		WeatherData w5_night = new WeatherData(day5_night, "30 SE (mph)", "clear", 0, 0, 10);
 
-		weatherOracle12k.Add(day0_am, w0_am);
-		weatherOracle12k.Add(day0_pm, w0_pm);
-		weatherOracle12k.Add(day0_night, w0_night);
-		weatherOracle12k.Add(day1_am, w1_am);
-		weatherOracle12k.Add(day1_pm, w1_pm);
-		weatherOracle12k.Add(day1_night, w1_night);
-		weatherOracle12k.Add(day2_am, w2_am);
-		weatherOracle12k.Add(day2_pm, w2_pm);
-		weatherOracle12k.Add(day2_night, w2_night);
-		weatherOracle12k.Add(day3_am, w3_am);
-		weatherOracle12k.Add(day3_pm, w3_pm);
-		weatherOracle12k.Add(day3_night, w3_night);
-		weatherOracle12k.Add(day4_am, w4_am);
-		weatherOracle12k.Add(day4_pm, w4_pm);
-		weatherOracle12k.Add(day4_night, w4_night);
-		weatherOracle12k.Add(day5_am, w5_am);
-		weatherOracle12k.Add(day5_pm, w5_pm);
-		weatherOracle12k.Add(day5_night, w5_night);
+		weatherOracle18k.Add(day0_am, w0_am);
+		weatherOracle18k.Add(day0_pm, w0_pm);
+		weatherOracle18k.Add(day0_night, w0_night);
+		weatherOracle18k.Add(day1_am, w1_am);
+		weatherOracle18k.Add(day1_pm, w1_pm);
+		weatherOracle18k.Add(day1_night, w1_night);
+		weatherOracle18k.Add(day2_am, w2_am);
+		weatherOracle18k.Add(day2_pm, w2_pm);
+		weatherOracle18k.Add(day2_night, w2_night);
+		weatherOracle18k.Add(day3_am, w3_am);
+		weatherOracle18k.Add(day3_pm, w3_pm);
+		weatherOracle18k.Add(day3_night, w3_night);
+		weatherOracle18k.Add(day4_am, w4_am);
+		weatherOracle18k.Add(day4_pm, w4_pm);
+		weatherOracle18k.Add(day4_night, w4_night);
+		weatherOracle18k.Add(day5_am, w5_am);
+		weatherOracle18k.Add(day5_pm, w5_pm);
+		weatherOracle18k.Add(day5_night, w5_night);
 
-		foreach (KeyValuePair<DateTime, WeatherData> kvp in weatherOracle12k) {
-			print(kvp.Value.toString());
+		foreach (KeyValuePair<DateTime, WeatherData> data in weatherOracle18k) {
+			print(data.Value.toString());
 		}
+		populateWeatherData21k();
 	}
+
+	private void populateWeatherData21k() {
+		// Data for elevation at 21k feet
+		DateTime day0_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 6, 0, 0);
+		WeatherData w0_am = new WeatherData(day0_am, "5 SE (mph)", "clear", 0, 0, -2);
+		DateTime day0_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 14, 0, 0);
+		WeatherData w0_pm = new WeatherData(day0_pm, "30 NE (mph)", "snow showers", 1.6, 0, -2);
+		DateTime day0_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 20, 0, 0);
+		WeatherData w0_night = new WeatherData(day0_night, "30 NE (mph)", "snow showers", 4.3, 0, -6);
+		DateTime day1_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 6, 0, 0);
+		WeatherData w1_am = new WeatherData(day1_am, "25 NE (mph)", "heavy snow", 4.3, 0, -8);
+		DateTime day1_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 14, 0, 0);
+		WeatherData w1_pm = new WeatherData(day1_pm, "5 SE (mph)", "snow showers", 4.3, 0, -11);
+		DateTime day1_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 20, 0, 0);
+		WeatherData w1_night = new WeatherData(day1_night, "30 SE (mph)", "snow showers", 0.8, 0, -9);
+		DateTime day2_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 6, 0, 0);
+		WeatherData w2_am = new WeatherData(day2_am, "25 SE (mph)", "clear", 0, 0, -4);
+		DateTime day2_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 14, 0, 0);
+		WeatherData w2_pm = new WeatherData(day2_pm, "15 SE (mph)", "clear", 0, 0, 0);
+		DateTime day2_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 20, 0, 0);
+		WeatherData w2_night = new WeatherData(day2_night, "15 NE (mph)", "clear", 0, 0, 0);
+		DateTime day3_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 6, 0, 0);
+		WeatherData w3_am = new WeatherData(day3_am, "15 NE (mph)", "snow showers", 0.4, 0, -2);
+		DateTime day3_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 14, 0, 0);
+		WeatherData w3_pm = new WeatherData(day3_pm, "15 NE (mph)", "snow showers", 3.1, 0, -2);
+		DateTime day3_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 20, 0, 0);
+		WeatherData w3_night = new WeatherData(day3_night, "5 SE (mph)", "snow showers", 1.6, 0, -6);
+		DateTime day4_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 6, 0, 0);
+		WeatherData w4_am = new WeatherData(day4_am, "15 SE (mph)", "snow showers", 0.4, 0, -4);
+		DateTime day4_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 14, 0, 0);
+		WeatherData w4_pm = new WeatherData(day4_pm, "20 SE (mph)", "snow showers", 2.0, 0, -2);
+		DateTime day4_night = new DateTime(firstDay.Year, firstDay.Month, 1, 20, 0, 0);
+		WeatherData w4_night = new WeatherData(day4_night, "15 S (mph)", "snow showers", 0, 0, -4);
+		DateTime day5_am = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 6, 0, 0);
+		WeatherData w5_am = new WeatherData(day5_am, "20 SE (mph)", "clear", 0, 0, -4);
+		DateTime day5_pm = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 14, 0, 0);
+		WeatherData w5_pm = new WeatherData(day5_pm, "35 SE (mph)", "snow showers", 0.8, 0, -2);
+		DateTime day5_night = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 20, 0, 0);
+		WeatherData w5_night = new WeatherData(day5_night, "30 SE (mph)", "clear", 0, 0, -2);
+
+		weatherOracle21k.Add(day0_am, w0_am);
+		weatherOracle21k.Add(day0_pm, w0_pm);
+		weatherOracle21k.Add(day0_night, w0_night);
+		weatherOracle21k.Add(day1_am, w1_am);
+		weatherOracle21k.Add(day1_pm, w1_pm);
+		weatherOracle21k.Add(day1_night, w1_night);
+		weatherOracle21k.Add(day2_am, w2_am);
+		weatherOracle21k.Add(day2_pm, w2_pm);
+		weatherOracle21k.Add(day2_night, w2_night);
+		weatherOracle21k.Add(day3_am, w3_am);
+		weatherOracle21k.Add(day3_pm, w3_pm);
+		weatherOracle21k.Add(day3_night, w3_night);
+		weatherOracle21k.Add(day4_am, w4_am);
+		weatherOracle21k.Add(day4_pm, w4_pm);
+		weatherOracle21k.Add(day4_night, w4_night);
+		weatherOracle21k.Add(day5_am, w5_am);
+		weatherOracle21k.Add(day5_pm, w5_pm);
+		weatherOracle21k.Add(day5_night, w5_night);
+
+		populateWeatherData24k();
+	}
+
+	private void populateWeatherData24k() {
+		// Data for elevation at 24k feet
+		DateTime day0_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 6, 0, 0);
+		WeatherData w0_am = new WeatherData(day0_am, "5 SE (mph)", "clear", 0, 0, -16);
+		DateTime day0_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 14, 0, 0);
+		WeatherData w0_pm = new WeatherData(day0_pm, "30 NE (mph)", "snow showers", 1.6, 0, -15);
+		DateTime day0_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 20, 0, 0);
+		WeatherData w0_night = new WeatherData(day0_night, "30 NE (mph)", "snow showers", 4.3, 0, -17);
+		DateTime day1_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 6, 0, 0);
+		WeatherData w1_am = new WeatherData(day1_am, "25 NE (mph)", "heavy snow", 4.3, 0, -20);
+		DateTime day1_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 14, 0, 0);
+		WeatherData w1_pm = new WeatherData(day1_pm, "5 SE (mph)", "snow showers", 4.3, 0, -22);
+		DateTime day1_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 20, 0, 0);
+		WeatherData w1_night = new WeatherData(day1_night, "30 SE (mph)", "snow showers", 0.8, 0, -20);
+		DateTime day2_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 6, 0, 0);
+		WeatherData w2_am = new WeatherData(day2_am, "25 SE (mph)", "clear", 0, 0, -17);
+		DateTime day2_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 14, 0, 0);
+		WeatherData w2_pm = new WeatherData(day2_pm, "15 SE (mph)", "clear", 0, 0, -11);
+		DateTime day2_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 20, 0, 0);
+		WeatherData w2_night = new WeatherData(day2_night, "15 NE (mph)", "clear", 0, 0, -11);
+		DateTime day3_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 6, 0, 0);
+		WeatherData w3_am = new WeatherData(day3_am, "15 NE (mph)", "snow showers", 0.4, 0, -13);
+		DateTime day3_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 14, 0, 0);
+		WeatherData w3_pm = new WeatherData(day3_pm, "15 NE (mph)", "snow showers", 3.1, 0, -15);
+		DateTime day3_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 20, 0, 0);
+		WeatherData w3_night = new WeatherData(day3_night, "5 SE (mph)", "snow showers", 1.6, 0, -17);
+		DateTime day4_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 6, 0, 0);
+		WeatherData w4_am = new WeatherData(day4_am, "15 SE (mph)", "snow showers", 0.4, 0, -15);
+		DateTime day4_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 14, 0, 0);
+		WeatherData w4_pm = new WeatherData(day4_pm, "20 SE (mph)", "snow showers", 2.0, 0, -13);
+		DateTime day4_night = new DateTime(firstDay.Year, firstDay.Month, 1, 20, 0, 0);
+		WeatherData w4_night = new WeatherData(day4_night, "15 S (mph)", "snow showers", 0, 0, -15);
+		DateTime day5_am = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 6, 0, 0);
+		WeatherData w5_am = new WeatherData(day5_am, "20 SE (mph)", "clear", 0, 0, -17);
+		DateTime day5_pm = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 14, 0, 0);
+		WeatherData w5_pm = new WeatherData(day5_pm, "35 SE (mph)", "snow showers", 0.8, 0, -15);
+		DateTime day5_night = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 20, 0, 0);
+		WeatherData w5_night = new WeatherData(day5_night, "30 SE (mph)", "clear", 0, 0, -13);
+
+		weatherOracle24k.Add(day0_am, w0_am);
+		weatherOracle24k.Add(day0_pm, w0_pm);
+		weatherOracle24k.Add(day0_night, w0_night);
+		weatherOracle24k.Add(day1_am, w1_am);
+		weatherOracle24k.Add(day1_pm, w1_pm);
+		weatherOracle24k.Add(day1_night, w1_night);
+		weatherOracle24k.Add(day2_am, w2_am);
+		weatherOracle24k.Add(day2_pm, w2_pm);
+		weatherOracle24k.Add(day2_night, w2_night);
+		weatherOracle24k.Add(day3_am, w3_am);
+		weatherOracle24k.Add(day3_pm, w3_pm);
+		weatherOracle24k.Add(day3_night, w3_night);
+		weatherOracle24k.Add(day4_am, w4_am);
+		weatherOracle24k.Add(day4_pm, w4_pm);
+		weatherOracle24k.Add(day4_night, w4_night);
+		weatherOracle24k.Add(day5_am, w5_am);
+		weatherOracle24k.Add(day5_pm, w5_pm);
+		weatherOracle24k.Add(day5_night, w5_night);
+
+		populateWeatherData27k();
+	}
+
+	private void populateWeatherData27k() {
+		// Data for elevation at 27k feet
+		DateTime day0_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 6, 0, 0);
+		WeatherData w0_am = new WeatherData(day0_am, "5 SE (mph)", "clear", 0, 0, -26);
+		DateTime day0_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 14, 0, 0);
+		WeatherData w0_pm = new WeatherData(day0_pm, "30 NE (mph)", "snow showers", 1.6, 0, -26);
+		DateTime day0_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 20, 0, 0);
+		WeatherData w0_night = new WeatherData(day0_night, "30 NE (mph)", "snow showers", 4.3, 0, -26);
+		DateTime day1_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 6, 0, 0);
+		WeatherData w1_am = new WeatherData(day1_am, "25 NE (mph)", "heavy snow", 4.3, 0, -31);
+		DateTime day1_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 14, 0, 0);
+		WeatherData w1_pm = new WeatherData(day1_pm, "5 SE (mph)", "snow showers", 4.3, 0, -33);
+		DateTime day1_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 1, 20, 0, 0);
+		WeatherData w1_night = new WeatherData(day1_night, "30 SE (mph)", "snow showers", 0.8, 0, -31);
+		DateTime day2_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 6, 0, 0);
+		WeatherData w2_am = new WeatherData(day2_am, "25 SE (mph)", "clear", 0, 0, -29);
+		DateTime day2_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 14, 0, 0);
+		WeatherData w2_pm = new WeatherData(day2_pm, "15 SE (mph)", "clear", 0, 0, -20);
+		DateTime day2_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 2, 20, 0, 0);
+		WeatherData w2_night = new WeatherData(day2_night, "15 NE (mph)", "clear", 0, 0, -20);
+		DateTime day3_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 6, 0, 0);
+		WeatherData w3_am = new WeatherData(day3_am, "15 NE (mph)", "snow showers", 0.4, 0, -24);
+		DateTime day3_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 14, 0, 0);
+		WeatherData w3_pm = new WeatherData(day3_pm, "15 NE (mph)", "snow showers", 3.1, 0, -24);
+		DateTime day3_night = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 3, 20, 0, 0);
+		WeatherData w3_night = new WeatherData(day3_night, "5 SE (mph)", "snow showers", 1.6, 0, -27);
+		DateTime day4_am = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 6, 0, 0);
+		WeatherData w4_am = new WeatherData(day4_am, "15 SE (mph)", "snow showers", 0.4, 0, -26);
+		DateTime day4_pm = new DateTime(firstDay.Year, firstDay.Month, firstDay.Day + 4, 14, 0, 0);
+		WeatherData w4_pm = new WeatherData(day4_pm, "20 SE (mph)", "snow showers", 2.0, 0, -24);
+		DateTime day4_night = new DateTime(firstDay.Year, firstDay.Month, 1, 20, 0, 0);
+		WeatherData w4_night = new WeatherData(day4_night, "15 S (mph)", "snow showers", 0, 0, -26);
+		DateTime day5_am = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 6, 0, 0);
+		WeatherData w5_am = new WeatherData(day5_am, "20 SE (mph)", "clear", 0, 0, -24);
+		DateTime day5_pm = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 14, 0, 0);
+		WeatherData w5_pm = new WeatherData(day5_pm, "35 SE (mph)", "snow showers", 0.8, 0, -26);
+		DateTime day5_night = new DateTime(firstDay.Year, firstDay.Month + 1, 1, 20, 0, 0);
+		WeatherData w5_night = new WeatherData(day5_night, "30 SE (mph)", "clear", 0, 0, -27);
+
+		weatherOracle27k.Add(day0_am, w0_am);
+		weatherOracle27k.Add(day0_pm, w0_pm);
+		weatherOracle27k.Add(day0_night, w0_night);
+		weatherOracle27k.Add(day1_am, w1_am);
+		weatherOracle27k.Add(day1_pm, w1_pm);
+		weatherOracle27k.Add(day1_night, w1_night);
+		weatherOracle27k.Add(day2_am, w2_am);
+		weatherOracle27k.Add(day2_pm, w2_pm);
+		weatherOracle27k.Add(day2_night, w2_night);
+		weatherOracle27k.Add(day3_am, w3_am);
+		weatherOracle27k.Add(day3_pm, w3_pm);
+		weatherOracle27k.Add(day3_night, w3_night);
+		weatherOracle27k.Add(day4_am, w4_am);
+		weatherOracle27k.Add(day4_pm, w4_pm);
+		weatherOracle27k.Add(day4_night, w4_night);
+		weatherOracle27k.Add(day5_am, w5_am);
+		weatherOracle27k.Add(day5_pm, w5_pm);
+		weatherOracle27k.Add(day5_night, w5_night);
+	}
+
 }
