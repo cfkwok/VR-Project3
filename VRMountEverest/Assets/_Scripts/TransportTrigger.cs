@@ -8,13 +8,11 @@ public class TransportTrigger : MonoBehaviour {
     public Text currentLocation;
     private String currentLocationStr;
     private String savedPrevBeforePeak;
-	private GamePadController gamepadcontroller;
     
 
 	// Use this for initialization
 	void Start () {
 		savedPrevBeforePeak = "South";
-		gamepadcontroller = (GamePadController)FindObjectOfType (typeof(GamePadController));
     }
 
     // Update is called once per frame
@@ -23,7 +21,7 @@ public class TransportTrigger : MonoBehaviour {
 		GameObject camp1 = GameObject.Find("/SouthColPath/BaseCamp");
 		GameObject nCp1 = GameObject.Find("/NorthColPath/Checkpoint1");
     	// Next elevation
-		if (gamepadcontroller.GetNextElevationKey()) {
+		if (Input.GetKeyDown ("x") || Input.GetButtonDown("Square")) {
 	   		if (currentLocationStr.Contains("South Col")) {
 		   		GameObject camp2 = GameObject.Find("/SouthColPath/Camp2");
 		   		GameObject camp3 = GameObject.Find("/SouthColPath/Camp3");

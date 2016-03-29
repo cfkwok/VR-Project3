@@ -1,9 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\HeightmapFromTexture.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\TransportTrigger.cs">
     <Files>
-      <File FileName="Assets\_Scripts\NewBehaviourScript.js" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\HeightmapFromTexture.js" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\GamePadController.cs" Line="37" Column="66" />
+      <File FileName="Assets\_Scripts\TimeController.cs" Line="15" Column="4" />
+      <File FileName="Assets\_Scripts\TransportTrigger.cs" Line="26" Column="62" />
+      <File FileName="Assets\_Scripts\updateElevation.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\UpdateTrailText.cs" Line="1" Column="5" />
+      <File FileName="Assets\_Scripts\WeatherController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

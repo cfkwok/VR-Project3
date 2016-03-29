@@ -12,19 +12,17 @@ public class TimeController : MonoBehaviour {
 	private DateTime simTime;
 	private float sunLocation = 0.0f;	
 	private float starLocation = 0.0f;	
-	private GamePadController gamepadcontroller;
 
 	// Use this for initialization
 	void Start () {
 		simTime = currentTime;
 		InvokeRepeating("UpdateTime", 1, 1.0F);
-		gamepadcontroller = (GamePadController)FindObjectOfType (typeof(GamePadController));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		if (gamepadcontroller.GetHourForwardKey()) {
+		if (Input.GetKeyDown ("g") || Input.GetButtonDown("R1")) {
 			print("G was pressed. 1 hour forward");
 			simTime = simTime.AddHours(1.00);
 			sunLocation += (0.25f * 60);
@@ -33,7 +31,7 @@ public class TimeController : MonoBehaviour {
 			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 			
 		}
-		if (gamepadcontroller.GetHourBackwardKey()) {
+		if (Input.GetKeyDown ("f") || Input.GetButtonDown("L1")) {
 			print("F was pressed. 1 hour backward");
 			simTime = simTime.AddHours(-1.00);
 			sunLocation += (0.25f * -60);
@@ -41,11 +39,11 @@ public class TimeController : MonoBehaviour {
 			starLocation += (0.25f * -60);
 			Stars.transform.eulerAngles = new Vector3(starLocation, 0f, 0f);
 		}
-		if (gamepadcontroller.GetPeriodNextKey()) {
+		if (Input.GetKeyDown ("t") || Input.GetButtonDown("R2")) {
 			print("T was pressed. Next time period");
 			simTime = nextTimePeriod(simTime);
 		}
-		if (gamepadcontroller.GetPeriodPreviousKey()) {
+		if (Input.GetKeyDown ("r") || Input.GetButtonDown("L2")) {
 			print("R was pressed. Previous time period");
 			simTime = prevTimePeriod(simTime);
 		}
