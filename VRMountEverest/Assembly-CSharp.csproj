@@ -83,6 +83,7 @@
      <Compile Include="Assets\_Scripts\SnowSystem.cs" />
      <Compile Include="Assets\_Scripts\TimeController.cs" />
      <Compile Include="Assets\_Scripts\TransportTrigger.cs" />
+     <Compile Include="Assets\_Scripts\UpdateDataText.cs" />
      <Compile Include="Assets\_Scripts\UpdateTrailText.cs" />
      <Compile Include="Assets\_Scripts\WeatherController.cs" />
      <Compile Include="Assets\_Scripts\WeatherData.cs" />
