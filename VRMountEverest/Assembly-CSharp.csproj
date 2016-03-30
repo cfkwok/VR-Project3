@@ -90,6 +90,7 @@
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
      <None Include="Assets\Cardboard\Resources\UnlitTexture.shader" />
      <None Include="Assets\RainMaker\Prefab\RainShader.shader" />
+     <None Include="Assets\Idle Animations\Idle Package Description.txt" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Cardboard\Resources\UI\CardboardReticleShader.shader" />

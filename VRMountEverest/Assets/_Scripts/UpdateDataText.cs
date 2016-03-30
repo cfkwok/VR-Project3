@@ -6,6 +6,7 @@ using System.Collections;
 public class UpdateDataText : MonoBehaviour {
 
 	public Text dataText;
+	//public Texture texture;
 	private bool showText = false;
 
 	// Use this for initialization
@@ -28,7 +29,7 @@ public class UpdateDataText : MonoBehaviour {
 			dataText.text = "59+7+1+1";
 		} else if (other.gameObject.name == "Avalanche") {
 			dataText.text = "45+1+1";
-		} else if (other.gameObject.name == "Exposure/Frostbite") {
+		} else if (other.gameObject.name == "Frostbite") {
 			dataText.text = "7/17";
 		} else if (other.gameObject.name == "Exhaustion") {
 			dataText.text = "13";
@@ -41,4 +42,9 @@ public class UpdateDataText : MonoBehaviour {
 	void OnTriggerExit (Collider other) {
 		dataText.text = "";
 	}
+
+	/*void OnGUI () {
+		GUI.DrawTexture (new Rect (Screen.width/2-512, Screen.height/2-384, 1024, 768), texture, ScaleMode.ScaleToFit);
+	}
+	*/
 }
