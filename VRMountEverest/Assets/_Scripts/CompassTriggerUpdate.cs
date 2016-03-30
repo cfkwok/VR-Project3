@@ -16,6 +16,8 @@ public class CompassTriggerUpdate : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		tUpdate.target = targetLocation;
+		if (tUpdate != null && targetLocation != null) {
+			tUpdate.target = targetLocation;
+		}
 	}
 }
