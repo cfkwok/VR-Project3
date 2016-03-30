@@ -26,6 +26,7 @@ public class WeatherController : MonoBehaviour {
     public Text weatherText; //usage weatherText.text = "text"; 
     public updateElevation upElev;
     public WeatherData currentWeather;
+    public SnowSystem snowSys;
 
 	
 
@@ -195,21 +196,25 @@ public class WeatherController : MonoBehaviour {
 
 		if (currentWeather.snow >= 6) {
 			// Display heavy snow animation
-			baseSnowScript.RainIntensity = 0.08f;
+			//baseSnowScript.RainIntensity = 0.08f;
+			snowSys.setSnowParticles(3000);
             snowIntensity = intensity.Heavy;
 		}
 		else if (currentWeather.snow >= 3) {
 			// Display moderate snow animation
-			baseSnowScript.RainIntensity = 0.04f;
+			//baseSnowScript.RainIntensity = 0.04f;
+			snowSys.setSnowParticles(1200);
             snowIntensity = intensity.Medium;
 		}
 		else if (currentWeather.snow >= 1) {
 			// Display light snow animation
-			baseSnowScript.RainIntensity = 0.02f;
+			//baseSnowScript.RainIntensity = 0.02f;
+			snowSys.setSnowParticles(500);
             snowIntensity = intensity.Light;
 		}
 		else {
-			baseSnowScript.RainIntensity = 0.0f;
+			//baseSnowScript.RainIntensity = 0.0f;
+			snowSys.setSnowParticles(1);
             snowIntensity = intensity.None;
 		}
 
