@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6E8AA363-7650-9D4A-E6F4-7A93DBAF23C9}</ProjectGuid>
+    <ProjectGuid>{F071C0B6-F922-E040-7C13-18C3C3373D1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-UnityScript-Editor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,49 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUI.cs" />
-     <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUIMouse.cs" />
-     <Compile Include="Assets\Cardboard\Legacy\Scripts\CardboardOnGUIWindow.cs" />
-     <Compile Include="Assets\Cardboard\Legacy\Scripts\SkyboxMesh.cs" />
-     <Compile Include="Assets\Cardboard\Legacy\Scripts\StereoLensFlare.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\Audio\CardboardAudio.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\Audio\CardboardAudioListener.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\Audio\CardboardAudioRoom.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\Audio\CardboardAudioSource.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\Cardboard.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\CardboardEye.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\CardboardHead.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\CardboardPostRender.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\CardboardPreRender.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\CardboardProfile.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\GazeInputModule.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\Pose3D.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\StereoController.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\StereoRenderEffect.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\UI\CardboardReticle.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\UI\ICardboardPointer.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\VRDevices\BaseAndroidDevice.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\VRDevices\BaseCardboardDevice.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\VRDevices\BaseVRDevice.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\VRDevices\CardboardAndroidDevice.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\VRDevices\CardboardiOSDevice.cs" />
-     <Compile Include="Assets\Cardboard\Scripts\VRDevices\UnityEditorDevice.cs" />
-     <Compile Include="Assets\RainMaker\Demo\DemoScript.cs" />
-     <Compile Include="Assets\RainMaker\Demo\DemoScript2D.cs" />
-     <Compile Include="Assets\RainMaker\Prefab\BaseRainScript.cs" />
-     <Compile Include="Assets\RainMaker\Prefab\RainCollision.cs" />
-     <Compile Include="Assets\RainMaker\Prefab\RainScript.cs" />
-     <Compile Include="Assets\RainMaker\Prefab\RainScript2D.cs" />
-     <Compile Include="Assets\_Scripts\CompassTriggerUpdate.cs" />
-     <Compile Include="Assets\_Scripts\PlayerUpdate.cs" />
-     <Compile Include="Assets\_Scripts\SnowSystem.cs" />
-     <Compile Include="Assets\_Scripts\TimeController.cs" />
-     <Compile Include="Assets\_Scripts\TransportTrigger.cs" />
-     <Compile Include="Assets\_Scripts\UpdateTrailText.cs" />
-     <Compile Include="Assets\_Scripts\WeatherController.cs" />
-     <Compile Include="Assets\_Scripts\WeatherData.cs" />
-     <Compile Include="Assets\_Scripts\targetingUpdate.cs" />
-     <Compile Include="Assets\_Scripts\updateElevation.cs" />
+     <Compile Include="Assets\Editor\HeightmapFromTexture.js" />
      <None Include="Assets\Cardboard\Resources\SkyboxMesh.shader" />
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
      <None Include="Assets\Cardboard\Resources\UnlitTexture.shader" />
@@ -98,16 +56,45 @@
      <None Include="Assets\RainMaker\Readme.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\Cardboard\Resources\SolidColor.shader" />
+ <Reference Include="UnityEditor.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.EditorTestsRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.TreeEditor">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{CDE5ACE3-C624-1778-8CE9-F48C65EA0FA2}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{6E8AA363-7650-9D4A-E6F4-7A93DBAF23C9}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
