@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CompassTriggerUpdate : MonoBehaviour {
 	public targetingUpdate tUpdate;
+	public GameObject targetLocation;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,6 @@ public class CompassTriggerUpdate : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		tUpdate.target = GameObject.Find("Cube2");
+		tUpdate.target = targetLocation;
 	}
 }
