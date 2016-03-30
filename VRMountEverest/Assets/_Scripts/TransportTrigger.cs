@@ -21,7 +21,7 @@ public class TransportTrigger : MonoBehaviour {
 		GameObject camp1 = GameObject.Find("/SouthColPath/BaseCamp");
 		GameObject nCp1 = GameObject.Find("/NorthColPath/Checkpoint1");
     	// Next elevation
-		if (Input.GetKeyDown ("x") || Input.GetButtonDown("Square")) {
+		if (Input.GetKeyDown ("x") || Input.GetButtonDown("PS4_Square")) {
 	   		if (currentLocationStr.Contains("South Col")) {
 		   		GameObject camp2 = GameObject.Find("/SouthColPath/Camp2");
 		   		GameObject camp3 = GameObject.Find("/SouthColPath/Camp3");
@@ -76,7 +76,7 @@ public class TransportTrigger : MonoBehaviour {
        }
 
        // Prev elevation
-	   if (Input.GetKeyDown("z")) {
+		if (Input.GetKeyDown("z") || Input.GetButtonDown("PS4_Circle")) {
 	   		if (currentLocationStr.Contains("South Col")) {
 		   		GameObject camp2 = GameObject.Find("/SouthColPath/Camp2");
 		   		GameObject camp3 = GameObject.Find("/SouthColPath/Camp3");
@@ -131,7 +131,7 @@ public class TransportTrigger : MonoBehaviour {
        }
 
        // Switch paths
-       if (Input.GetKeyDown("q")) {
+		if (Input.GetKeyDown("q") || Input.GetButtonDown("PS4_X")) {
        		if (currentLocationStr.Contains("South Col")) {
        			print("IM IN SOUTH COL");
        			playerObj.transform.position = new Vector3(nCp1.transform.position.x, nCp1.transform.position.y, nCp1.transform.position.z);
