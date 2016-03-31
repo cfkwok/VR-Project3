@@ -36,20 +36,61 @@ The compiled data we have on Mount Everest will give the users an experience of 
 
 ### Gaining Inisght into the Data
 Predict two major insights participants will gain:  
-1. The magnitude of Mount Everest.
-2. 
+1. The beauty and magnitude of Mount Everest.  
+2. The difficulty journey to the top of Mount Everest.
 
 Person 1:
-What he/she knows about Everest
-Insights gained after VR experience
+What he/she knows about Everest  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Highest peak in the world?"  
+Insights gained after VR experience  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Mount Everest highest peak is approximately 24000-25000 feet"  
 
 Person 2:
-What he/she knows about Everest
-Insights gained after VR experience
+What he/she knows about Everest  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Tallest mountain in the world."  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Many people die climbing it."  
+Insights gained after VR experience  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "I felt like I was standing at the peak of Mount Everest."  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "I learned that there were only 5000 to reach the peak."  
 
 Person 3:
-What he/she knows about Everest
-Insights gained after VR experience
+What he/she knows about Everest  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Huge mountain of snow."  
+Insights gained after VR experience  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "47 people died from avalanche."
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Beautiful scene at the top of the mountain."
+
+Kennedy Simulator Sickness Questionnaire  
+
+|                          | [1] | [2] | [3] |
+|--------------------------|-----|-----|-----|
+| General Discomfort       | 1   | 2   | 0   |
+| Fatigue                  | 0   | 1   | 0   |
+| Boredom                  | 1   | 1   | 1   |
+| Drowsiness               | 0   | 0   | 0   |
+| Headache                 | 0   | 2   | 0   |
+| Eyestrain                | 0   | 1   | 0   |
+| Difficulty Focusing      | 0   | 0   | 0   |
+| Salivation Increase      | 0   | 0   | 0   |
+| Sweating                 | 0   | 0   | 0   |
+| Nausea                   | 0   | 0   | 0   |
+| Difficulty Concentrating | 0   | 0   | 0   |
+| Mental Depression        | 0   | 0   | 0   |
+| "Fullness of the Head"   | 0   | 0   | 0   |
+| Blurred Vision           | 0   | 0   | 0   |
+| Dizziness Eyes Open      | 0   | 0   | 0   |
+| Vertigo                  | 0   | 0   | 0   |
+| Visual Flashbacks        | 0   | 0   | 0   |
+| Faintness                | 0   | 0   | 0   |
+| Aware of Breathing       | 0   | 0   | 0   |
+| Stomach Awareness        | 0   | 0   | 0   |
+| Loss of Appetite         | 0   | 0   | 0   |
+| Increased Appetite       | 0   | 0   | 0   |
+| Desire to Move Bowels    | 0   | 0   | 0   |
+| Confusion                | 0   | 0   | 0   |
+| Burping                  | 0   | 0   | 0   |
+| Vomiting                 | 0   | 0   | 0   |
+| Total                    | 2   | 7   | 1   |
 
 Discuss if predictions were correct...
 
