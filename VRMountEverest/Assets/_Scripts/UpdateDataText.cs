@@ -22,19 +22,24 @@ public class UpdateDataText : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		// starting point data
 		if (other.gameObject.name == "BaseCamp") {
-			dataText.text = "Over 3000 summiters started their adventure here at the South Col. This pass is so popular that many people sent up camps here.";
+			dataText.text = "Over 3000 summiters started their adventure here at the South Col! This pass is so popular that many people sent up camps here!";
 		} else if (other.gameObject.name == "Checkpoint1") {
-			dataText.text = "The second most common starting point of summiters is the North Col with at least 1900 summiters.";
-		} else if (other.gameObject.name == "Fall") {
-			dataText.text = "59+7+1+1";
+			dataText.text = "The second most common starting point of summiters is the North Col with at least 1900 summiters!";
+		} else if (other.gameObject.name == "Falling") {
+			// 68 deaths by fall
+			dataText.text = "Cause of Death: Falling | 68 Recorded Deaths";
 		} else if (other.gameObject.name == "Avalanche") {
-			dataText.text = "45+1+1";
+			// 47 deaths by avalanche
+			dataText.text = "Cause of Death: Avalanche | 47 Recorded Deaths";
 		} else if (other.gameObject.name == "Frostbite") {
-			dataText.text = "7/17";
+			// 24 deaths by exposure/frostbite
+			dataText.text = "Cause of Death: Exposure/Frostbite | 24 Recorded Deaths ";
 		} else if (other.gameObject.name == "Exhaustion") {
-			dataText.text = "13";
+			// 13 deaths by exhaustion
+			dataText.text = "Cause of Death: Exhaustion| 13 Recorded Deaths ";
 		} else if (other.gameObject.name == "Peak") {
-			dataText.text = "Since Sir Edmund Percival Hillary's first successful summit to the top of Mount Everest in 1950, thousands of summiters has followed him. The number of summiters per decade has been growing at an exponential rate with a total of 5113 summiters as of 2011.";
+			// 5113 summiters; 219 deaths
+			dataText.text = "Congratulations! You are the 5114th summiter of 5332 attempts!";
 		}
 
 	}
