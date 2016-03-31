@@ -44,16 +44,16 @@ Insights gained after VR experience
 Discuss if predictions were correct...
 
 ### Research
-[Summiter Data](http://www.8000ers.com/cms/download.html?func=startdown&id=152)
-[Fatality Data](http://www.8000ers.com/cms/en/download.html?func=fileinfo&id=171)
-[Weather Data](http://www.mountain-forecast.com/peaks/Mount-Everest/forecasts/8850)
+[Summiter Data](http://www.8000ers.com/cms/download.html?func=startdown&id=152)  
+[Fatality Data](http://www.8000ers.com/cms/en/download.html?func=fileinfo&id=171)  
+[Weather Data](http://www.mountain-forecast.com/peaks/Mount-Everest/forecasts/8850)  
 
 ### Assets & Resources
-[Rain Maker Asset](https://www.assetstore.unity3d.com/en/#!/content/34938) by Digital Ruby, LLC
-[Day/Night Cycle Tutorial](https://www.youtube.com/watch?v=h5GFoI38DOg) by Glen Rhodes
-[Tents Model](https://www.assetstore.unity3d.com/en/#!/content/21461) by VIS Games
-[Breath Sound](https://www.freesound.org/people/The%20Baron/sounds/98397/) by The Baron
-[Mount Everest Heightmap](http://terrain.party/) by terrain.party
-[Heightmap Tutorial](https://www.youtube.com/watch?v=-vyNbalvXR4) by HelloWorldStudios
-[Humanoid Models](https://www.mixamo.com/) by mixamo
+[Rain Maker Asset](https://www.assetstore.unity3d.com/en/#!/content/34938) by Digital Ruby, LLC  
+[Day/Night Cycle Tutorial](https://www.youtube.com/watch?v=h5GFoI38DOg) by Glen Rhodes  
+[Tents Model](https://www.assetstore.unity3d.com/en/#!/content/21461) by VIS Games  
+[Breath Sound](https://www.freesound.org/people/The%20Baron/sounds/98397/) by The Baron  
+[Mount Everest Heightmap](http://terrain.party/) by terrain.party  
+[Heightmap Tutorial](https://www.youtube.com/watch?v=-vyNbalvXR4) by HelloWorldStudios  
+[Humanoid Models](https://www.mixamo.com/) by mixamo  
 
