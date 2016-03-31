@@ -60,6 +60,8 @@ Insights Gained After VR Experience
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "47 people died from avalanche."  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Beautiful scene at the top of the mountain."  
 
+Before going through the experience, all three people ([1], [2], [3]) have very common knowledge of Mount Everest's immense size. After the experience, our prediction of, "The beauty and magnitude of Mount Everest." was the more common insight the three individuals grasped. [1] gained insight on what the elevation of Mount Everest is at the peak, and [2] and [3] reported on the beautiful scenery of the mountain's peak. Although our second prediction, "The difficult journey to the top of Mount Everest.", was not as common, [2] and [3] alluded to the "difficult journey". [2] used the word "only" to describe his insight on how many people successfully ascended to the top of Mount Everest. This can be interpreted as his surprise to the fewer number of summiters than he expected. [3] learned how many people died from an avalanche, but simply reported the information rather than seeing it as part of the difficult journey.  
+
 **Kennedy Simulator Sickness Questionnaire**  
 
 |                          | [1] | [2] | [3] |
@@ -91,8 +93,6 @@ Insights Gained After VR Experience
 | Burping                  | 0   | 0   | 0   |
 | Vomiting                 | 0   | 0   | 0   |
 | Total                    | 2   | 7   | 2   |
-
-Before going through the experience, all three people ([1], [2], [3]) have very common knowledge of Mount Everest's immense size. After the experience, our prediction of, "The beauty and magnitude of Mount Everest." was the more common insight the three individuals grasped. [1] gained insight on what the elevation of Mount Everest is at the peak, and [2] and [3] reported on the beautiful scenery of the mountain's peak. Although our second prediction, "The difficult journey to the top of Mount Everest.", was not as common, [2] and [3] alluded to the "difficult journey". [2] used the word "only" to describe his insight on how many people successfully ascended to the top of Mount Everest. This can be interpreted as his surprise to the fewer number of summiters than he expected. [3] learned how many people died from an avalanche, but simply reported the information rather than seeing it as part of the difficult journey.
 
 The simulator sickness questionnaire resulted in fairly reasonable results. [2] had a much higher total than the other two participants because the Google Cardboard did not fit comfortably on him which probably resulted in headache and eyestrain. [1] and [3] did report a discomfort in wearing the headset, but this did not cause any notable sickness to them. A major factor in these results are most likely due to the weight of the phone being used in the Cardboard. The phone is slightly larger than most phones causing the Cardboard to tilt forward and would rely only on the user's nose to support much of the weight.
 
