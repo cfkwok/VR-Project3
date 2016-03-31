@@ -36,8 +36,8 @@ The compiled data we have on Mount Everest will give the users an experience of 
 
 ### Gaining Inisght into the Data
 Predict two major insights participants will gain:  
-1.
-2.
+1. The magnitude of Mount Everest.
+2. 
 
 Person 1:
 What he/she knows about Everest
