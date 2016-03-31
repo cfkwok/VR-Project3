@@ -10,10 +10,14 @@ In this project, collective data on Mount Everest is shown to the users in virtu
 [Tonny Xie](https://github.com/tonny-12)  
 
 ### YouTube Video
-[Demo](INSERT YOUTUBE LINK!!!)
+[Demo](https://youtu.be/C4dzIEDLk_Y)
 
 ### Screenshots
-![alt text](INSERT SS!!!)
+![image](https://cloud.githubusercontent.com/assets/13974892/14173579/ab6cc0d2-f70c-11e5-98d0-337685971275.png)
+![image](https://cloud.githubusercontent.com/assets/13974892/14173604/ddd4a45e-f70c-11e5-8be2-d0f96647a9e7.png)
+![image](https://cloud.githubusercontent.com/assets/13974892/14173618/f74040b0-f70c-11e5-990e-17ccc2655566.png)
+![image](https://cloud.githubusercontent.com/assets/13974892/14173639/150277a8-f70d-11e5-9b4e-6313ee28aa53.png)
+![image](https://cloud.githubusercontent.com/assets/13974892/14173653/3f17e140-f70d-11e5-9cbb-2cbeb3befa74.png)
 
 ### Motivation and Explanation
 Presented with the idea of representing data in VR, our group came to plan the design of an interesting crossroads of data sources. The Everest VR experience we have designed allows users to live in a combination of various data. First, and most obvious, is the actual terrain that users will walk on. The terrain is derived from heightmap data which has been imported and rebuilt in-engine to be explored first hand. For the sake of attempting to keep people within typically traversed trails, we have included in a heads-up display a couple bits of information, including the current trail and a compass to direct the user to pre-defined waypoints, which updates to point to the subsequent waypoint as you arrive at each. Additionally, we have included, to augment the experience, accurate time and weather data from Everest. Information about the current weather is also included in the heads-up display, including time, wind speed, and rain/snow intensity. All weather is additionally represented visually, including implementation of a day-night cycle as well as independent snow and rain systems that trigger according to the recorded intensity of the weather. All time (and its corresponding weather) data is represented on a minute-by-minute resolution, at a rate of one minute simulated per one second of real time. Finally, we have also included in the experience, a small number of mini-episodes representing common fatality data.
