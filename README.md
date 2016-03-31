@@ -40,13 +40,13 @@ The compiled data we have on Mount Everest will give the users an experience of 
 2. The difficult journey to the top of Mount Everest.
 
 **Person 1:**  
-Knowledge on Mount Everest  
+Knowledge on Mount Everest   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Highest peak in the world?"  
 Insights Gained After VR Experience  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Mount Everest highest peak is approximately 24000-25000 feet"  
 
 **Person 2:**  
-Knowledge on Mount Everest 
+Knowledge on Mount Everest  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Tallest mountain in the world."  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Many people die climbing it."  
 Insights Gained After VR Experience  
@@ -54,9 +54,9 @@ Insights Gained After VR Experience
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "I learned that there were only 5000 to reach the peak."  
 
 **Person 3:**  
-Knowledge on Mount Everest 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Huge mountain of snow."  
-Insights Gained After VR Experience 
+Knowledge on Mount Everest  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Huge mountain of snow."   
+Insights Gained After VR Experience  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "47 people died from avalanche."  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Beautiful scene at the top of the mountain."  
 
@@ -94,7 +94,7 @@ Before going through the experience, all three people ([1], [2], [3]) have very 
 | Vomiting                 | 0   | 0   | 0   |
 | Total                    | 2   | 7   | 2   |
 
-The simulator sickness questionnaire yielded fairly resonable results with an average of 3. [2] had a much higher total than the other two participants because the Google Cardboard did not fit comfortably on him which probably resulted in headache and eyestrain. [1] and [3] did report a discomfort in wearing the headset, but this did not cause any notable sickness to them. A major factor in these results are most likely due to the weight of the phone being used in the Cardboard. The phone is slightly larger than most phones causing the Cardboard to tilt forward and would rely only on the user's nose to support much of the weight.
+The simulator sickness questionnaire yielded relatively good results with an average of 3. [2] had a much higher total than the other two participants because the Google Cardboard did not fit comfortably on him which probably resulted in headache and eyestrain. [1] and [3] did report a discomfort in wearing the headset, but this did not cause any notable sickness to them. A major factor in these results are most likely due to the weight of the phone being used in the Cardboard. The phone is slightly larger than most phones causing the Cardboard to tilt forward and would rely only on the user's nose to support much of the weight.
 
 ### Research
 [Summiter Data](http://www.8000ers.com/cms/download.html?func=startdown&id=152)  
