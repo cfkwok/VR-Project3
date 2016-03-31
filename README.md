@@ -94,7 +94,7 @@ Before going through the experience, all three people ([1], [2], [3]) have very 
 | Vomiting                 | 0   | 0   | 0   |
 | Total                    | 2   | 7   | 2   |
 
-The simulator sickness questionnaire resulted in fairly reasonable results. [2] had a much higher total than the other two participants because the Google Cardboard did not fit comfortably on him which probably resulted in headache and eyestrain. [1] and [3] did report a discomfort in wearing the headset, but this did not cause any notable sickness to them. A major factor in these results are most likely due to the weight of the phone being used in the Cardboard. The phone is slightly larger than most phones causing the Cardboard to tilt forward and would rely only on the user's nose to support much of the weight.
+The simulator sickness questionnaire yielded fairly resonable results with an average of 3. [2] had a much higher total than the other two participants because the Google Cardboard did not fit comfortably on him which probably resulted in headache and eyestrain. [1] and [3] did report a discomfort in wearing the headset, but this did not cause any notable sickness to them. A major factor in these results are most likely due to the weight of the phone being used in the Cardboard. The phone is slightly larger than most phones causing the Cardboard to tilt forward and would rely only on the user's nose to support much of the weight.
 
 ### Research
 [Summiter Data](http://www.8000ers.com/cms/download.html?func=startdown&id=152)  
