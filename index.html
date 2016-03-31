@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Vr-project3 : Mt. Everest">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Vr-project3</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cfkwok/VR-Project3">View on GitHub</a>
+
+          <h1 id="project_title">Vr-project3</h1>
+          <h2 id="project_tagline">Mt. Everest</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cfkwok/VR-Project3/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cfkwok/VR-Project3/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="vr-project3-mount-everest" class="anchor" href="#vr-project3-mount-everest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VR-Project3: Mount Everest</h1>
+
+<p>In this project, collective data on Mount Everest is shown to the users in virtual reality.</p>
+
+<h3>
+<a id="source-code-and-apk" class="anchor" href="#source-code-and-apk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Source Code and APK</h3>
+
+<p><a href="INSERT%20SOURCE%20CODE%20LINK!!!">Android APK and Source Code</a></p>
+
+<h3>
+<a id="authors" class="anchor" href="#authors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors</h3>
+
+<p><a href="https://github.com/cfkwok">Fai Kwok</a><br>
+<a href="https://github.com/Atonement100">Timothy Wagner</a><br>
+<a href="https://github.com/tonny-12">Tonny Xie</a>  </p>
+
+<h3>
+<a id="youtube-video" class="anchor" href="#youtube-video" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>YouTube Video</h3>
+
+<p><a href="https://youtu.be/C4dzIEDLk_Y">Demo</a></p>
+
+<h3>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h3>
+
+<p><img src="https://cloud.githubusercontent.com/assets/13974892/14173579/ab6cc0d2-f70c-11e5-98d0-337685971275.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173604/ddd4a45e-f70c-11e5-8be2-d0f96647a9e7.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173618/f74040b0-f70c-11e5-990e-17ccc2655566.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173639/150277a8-f70d-11e5-9b4e-6313ee28aa53.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173653/3f17e140-f70d-11e5-9cbb-2cbeb3befa74.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173912/f3fbd98a-f70e-11e5-8107-160874aeb9a2.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173925/0121d72c-f70f-11e5-89a5-fcf89bda866b.png" alt="image">
+<img src="https://cloud.githubusercontent.com/assets/13974892/14173934/104feaea-f70f-11e5-9396-e2b6e7605e80.png" alt="image"></p>
+
+<h3>
+<a id="motivation-and-explanation" class="anchor" href="#motivation-and-explanation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Motivation and Explanation</h3>
+
+<p>Presented with the idea of representing data in VR, our group came to plan the design of an interesting crossroads of data sources. The Everest VR experience we have designed allows users to live in a combination of various data. First, and most obvious, is the actual terrain that users will walk on. The terrain is derived from heightmap data which has been imported and rebuilt in-engine to be explored first hand. For the sake of attempting to keep people within typically traversed trails, we have included in a heads-up display a couple bits of information, including the current trail and a compass to direct the user to pre-defined waypoints, which updates to point to the subsequent waypoint as you arrive at each. Additionally, we have included, to augment the experience, accurate time and weather data from Everest. Information about the current weather is also included in the heads-up display, including time, wind speed, and rain/snow intensity. All weather is additionally represented visually, including implementation of a day-night cycle as well as independent snow and rain systems that trigger according to the recorded intensity of the weather. All time (and its corresponding weather) data is represented on a minute-by-minute resolution, at a rate of one minute simulated per one second of real time. Finally, we have also included in the experience, a small number of mini-episodes representing common fatality data.</p>
+
+<p>To allow users to experience more data in a compact span of time, we have also provided a number of manipulation tools to help them move through the data. Implemented are “teleports,” some of which allow users to physically teleport to a subsequent or previous waypoint. Other features of the teleport system allow users to teleport through time either forward or backward (while remaining in the same location), both on an hourly resolution and by larger segments of time, shifting users to either morning, evening, overnight time slots. Following either style of teleport, users will instantly resume the progression of the experience. All of these different types of teleports can be combined in a variety of ways to experience all permutations of each type of data we have included in the Everest VR project.</p>
+
+<h3>
+<a id="insight-objective" class="anchor" href="#insight-objective" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Insight Objective</h3>
+
+<p>The compiled data we have on Mount Everest will give the users an experience of what the climate one should expect at different elevations, the dangers and fatalities that occurred in the ascent, and easy-to-access campsites along the North-Col and South-Col routes of Everest within virtual reality. The use of VR leverages a better understanding of the altitudes of campsites along the routes, clearer insight of the weather expressed in that setting, and an immersed scare about the dangers of performing the ascent.</p>
+
+<h3>
+<a id="gaining-inisght-into-the-data" class="anchor" href="#gaining-inisght-into-the-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gaining Inisght into the Data</h3>
+
+<p>Predict two major insights participants will gain:<br>
+1. Elevation at each camp of South Col and its forecast
+2. Fatalities that occurred in Mt Everst</p>
+
+<p>Person 1:
+What he/she knows about Everest
+Insights gained after VR experience</p>
+
+<p>Person 2:
+What he/she knows about Everest
+Insights gained after VR experience</p>
+
+<p>Person 3:
+What he/she knows about Everest
+Insights gained after VR experience</p>
+
+<p>Discuss if predictions were correct...</p>
+
+<h3>
+<a id="research" class="anchor" href="#research" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Research</h3>
+
+<p><a href="http://www.8000ers.com/cms/download.html?func=startdown&amp;id=152">Summiter Data</a><br>
+<a href="http://www.8000ers.com/cms/en/download.html?func=fileinfo&amp;id=171">Fatality Data</a><br>
+<a href="http://www.mountain-forecast.com/peaks/Mount-Everest/forecasts/8850">Weather Data</a>  </p>
+
+<h3>
+<a id="assets--resources" class="anchor" href="#assets--resources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assets &amp; Resources</h3>
+
+<p><a href="https://www.assetstore.unity3d.com/en/#!/content/34938">Rain Maker Asset</a> by Digital Ruby, LLC<br>
+<a href="https://www.youtube.com/watch?v=h5GFoI38DOg">Day/Night Cycle Tutorial</a> by Glen Rhodes<br>
+<a href="https://www.assetstore.unity3d.com/en/#!/content/21461">Tents Model</a> by VIS Games<br>
+<a href="https://www.freesound.org/people/The%20Baron/sounds/98397/">Breath Sound</a> by The Baron<br>
+<a href="http://terrain.party/">Mount Everest Heightmap</a> by terrain.party<br>
+<a href="https://www.youtube.com/watch?v=-vyNbalvXR4">Heightmap Tutorial</a> by HelloWorldStudios<br>
+<a href="https://www.mixamo.com/">Humanoid Models</a> by mixamo  </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Vr-project3 maintained by <a href="https://github.com/cfkwok">cfkwok</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
