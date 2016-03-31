@@ -22,7 +22,7 @@ public class TransportTrigger : MonoBehaviour {
 		GameObject camp1 = GameObject.Find("/SouthColPath/BaseCamp");
 		GameObject nCp1 = GameObject.Find("/NorthColPath/Checkpoint1");
     	// Next elevation
-		if (Input.GetKeyDown("x") || Input.GetButtonDown("PS4_Square")) {
+		if (Input.GetKeyDown("x") || Input.GetButtonDown("PS4_Circle")) {
 	   		if (currentLocationStr.Contains("South Col")) {
 		   		GameObject camp2 = GameObject.Find("/SouthColPath/Camp2");
 		   		GameObject camp3 = GameObject.Find("/SouthColPath/Camp3");
@@ -77,7 +77,7 @@ public class TransportTrigger : MonoBehaviour {
        }
 
        // Prev elevation
-		if (Input.GetKeyDown("z")  || Input.GetButtonDown("PS4_Circle")) {
+		if (Input.GetKeyDown("z")  || Input.GetButtonDown("PS4_Square")) {
 	   		if (currentLocationStr.Contains("South Col")) {
 		   		GameObject camp2 = GameObject.Find("/SouthColPath/Camp2");
 		   		GameObject camp3 = GameObject.Find("/SouthColPath/Camp3");
